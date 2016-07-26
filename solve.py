@@ -8,11 +8,15 @@ def main():
     img = Image.new('RGB', size)
     with open('output.out', 'r') as f:
         lines = f.readlines()
+        x = 0
         for line in lines:
-            col = 0
+            y = 0
             for val in rgb_from_line(line):
                 r, g, b = rgb_from_val(val)
-                print r, g, b
+                img.putpixel((y, x), (r, g, b))
+                y += 1
+            x += 1
+        img.show()
 
 
 def rgb_from_val(val):
